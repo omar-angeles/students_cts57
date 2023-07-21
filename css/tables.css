@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto|fixed|initial|inherit;
+  }
+th, td {
+    border: 2px solid orange;
+
+    word-break: keep-all;
+
+  }
+  tr:first-child {
+
+    background-color: yellowgreen;
+
+  }
+  td:last-child {
+
+    font-style: italic;
+  
+  }
