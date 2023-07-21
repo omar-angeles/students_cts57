@@ -53,15 +53,13 @@ if(isset($_POST['save']))
 <body>
 	<section>
 		<h1>Seleccione los datos a insertar:</h1>
-    <form method="post" action="">
-    <input type="checkbox" id="checkItem" name="<?php echo $rows['curp'];?>" value="1">
-        <input type="checkbox" id="checkItem" name="check[]" value="2">
-        <input type="checkbox" id="checkItem" name="check[]" value="3">
-        <input type="checkbox" id="checkItem" name="check[]" value="4">
-        <button type="submit" class="btn btn-primary" style="width:200px" name="save">Submit</button>
-    </form>
+
+        
+    
 		<!-- TABLE CONSTRUCTION -->
-		<!-- <table id="data">
+		
+    <table  id="data" class="table">
+  <thead class="thead-dark">
     <tr>
     <th>curp</th>
 				<th>noControl</th>
@@ -115,7 +113,7 @@ if(isset($_POST['save']))
         <th>localidadSeguroSocial</th>
         <th>numeroCasaAlumno</th>
         <th>numeroCelularAlumno</th>
-      </tr> -->
+      </tr>
 			<!-- PHP CODE TO FETCH DATA FROM ROWS -->
 			<?php
 				// LOOP TILL END OF DATA
