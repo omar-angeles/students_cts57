@@ -113,7 +113,5 @@ for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
     //echo '<br/>'.$sql.'<br/>';
 }
 echo 'Carga completa';
-header("Location: http://localhost/proyectos/students_cts57/home.php");
+header("Location: http://localhost/proyectos/students_cts57/home2.php");
             
-
-
