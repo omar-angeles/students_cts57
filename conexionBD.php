@@ -1,5 +1,4 @@
 <?php
-
 $host = 'localhost';
 $usuario = 'root';
 $contrasena = '';
@@ -11,3 +10,5 @@ if ($mysqli->connect_errno){
     echo 'Fallo la conexion, revisar el log' . $mysqli->connect_error;
     die();
 }
+
+?>
