@@ -4,7 +4,6 @@ include 'conexionBD.php';
 $sql = " SELECT * FROM alumnos";
 $result = $mysqli->query($sql);
 $mysqli->close();
-
 ?>
 
 <body>
@@ -18,7 +17,7 @@ $mysqli->close();
           <th>Nombre completo</th>
           <th>Numero de casa</th>
           <th>Numero de celular</th>
-          <th>Acciones</th>
+          <!-- <th>Acciones</th> -->
         </tr>
 
 

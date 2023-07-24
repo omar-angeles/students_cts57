@@ -1,7 +1,7 @@
 <?php
 
 require '../vendor/autoload.php';
-require 'conexionBD.php';
+require '../conexionBD.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
@@ -105,5 +105,5 @@ for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
 
 }
 echo 'Carga completa';
-header("Location: http://localhost/proyectos/students_cts57/home2.php");
+header("Location: http://localhost/proyectos/students_cts57/tablesPreview.php");
             
