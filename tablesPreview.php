@@ -7,6 +7,8 @@ $mysqli->close();
 ?>
 
 <body>
+<br>
+<div id="left"><a href="home.php" class="btn btn-secondary btn-block">Regresar</a></div>
   <h1 id="example">Preview de datos del alumno</h1>
   <div class="table-responsive-sm">
     <table id="example" class="table table-hover">

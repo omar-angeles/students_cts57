@@ -18,7 +18,7 @@ if (!file_exists('archivos')) {
             echo "<br><br><div class='alert alert-success'><center><b>Se ha cargado correctamente el archivo, da click en siguiente para subir informacion a la base de datos</b></center></div>";
 
             echo '
-            <center><p>Subir informacion a la base de datos</p>
+            <center><p id="example">Subir informacion a la base de datos</p>
             <form action="../procesamientoExcel.php" method="POST" enctype="multipart/form-data">
             <button>Siguiente</button></center>
             </form>';
@@ -37,7 +37,7 @@ if (!file_exists('archivos')) {
         echo "<br><br><div class='alert alert-success'><center><b>Se ha cargado correctamente el archivo, da click en siguiente para subir informacion a la base de datos</b></center></div>";
 
         echo '
-        <center><p>Subir informacion a la base de datos</p>
+        <center><p id="example">Subir informacion a la base de datos</p>
         <form action="../procesamientoExcel.php" method="POST" enctype="multipart/form-data">
         <button>Siguiente</button></center>
         </form>';

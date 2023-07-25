@@ -32,3 +32,12 @@ body {
   #example {
     color: black;
   }
+
+  #left{
+    float: left;
+  }
+
+  #example2{
+    float: right;
+    color: black;
+  }
