@@ -22,7 +22,7 @@
     
     <div class="card border-info">
       <div class="card-header bg-info text-white">
-        Cargar información por documento de excel.
+        Listado de alumnos en base de datos
       </div>
       <div class="card-body">
         <p class="card-text">Con esta opción, usted puede ver el listado de alumnos que se encuentra en la base de datos actualmente</p>
