@@ -16,6 +16,6 @@ $apellido = $_SESSION['lastname'];
 </head>
 <header>
     <h1 id="blanco">DGETI 57</h1>
-    <p>Bienvenido, <?php echo $nombre . ' ' . $apellido; ?></p>
+    <p id="blanco">Bienvenido, <?php echo $nombre . ' ' . $apellido; ?></p>
     <form action="cerrar_sesion.php" method="POST"> <button type="submit" class="btn btn-primary btn-block">Cerrar sesión</button> </form>
 </header>
