@@ -107,5 +107,5 @@ for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
 
 }
 echo 'Carga completa';
-header("Location: http://localhost/proyectos/students_cts57/tablesPreview.php");
+header("Location: http://localhost/proyectos/students_cts57/tablesPreview.php?nume=1");
             

@@ -26,7 +26,7 @@
       </div>
       <div class="card-body">
         <p class="card-text">Con esta opción, usted puede ver el listado de alumnos que se encuentra en la base de datos actualmente</p>
-          <center><a href="tablesPreview.php" class="btn btn-outline-info">Listado de alumnos actuales</a></center>
+          <center><a href="tablesPreview.php?nume=1" class="btn btn-outline-info">Listado de alumnos actuales</a></center>
       </div>
     </div>
   </div>
