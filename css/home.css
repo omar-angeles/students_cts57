@@ -45,3 +45,7 @@ body {
   #blanco{
     color: white;
   }
+
+  #tarjetas{
+    float: center;
+  }
