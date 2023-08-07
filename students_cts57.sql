@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2023 a las 10:07:27
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: localhost
+-- Generation Time: Aug 07, 2023 at 04:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `students_cts57`
+-- Database: `students_cts57`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumnos`
+-- Table structure for table `alumnos`
 --
 
 CREATE TABLE `alumnos` (
@@ -87,7 +87,7 @@ CREATE TABLE `alumnos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Volcado de datos para la tabla `alumnos`
+-- Dumping data for table `alumnos`
 --
 
 INSERT INTO `alumnos` (`curp`, `noControl`, `apellidoPaterno`, `apellidoMaterno`, `nombres`, `sexoAlumno`, `fotoAlumno`, `fechaNacimientoAlumno`, `edadAlumno`, `ultimoSemestreAlumno`, `turnoAlumno`, `grupoAlumno`, `especialidadAlumno`, `becaBenito`, `trabajaAlumno`, `tipoSecundaria`, `hablaLenguaIndigena`, `domicilioAlumno`, `localidad`, `entidadFederativa`, `codigoPostal`, `noExterior`, `noInterior`, `descripcionCasa`, `viveConPadres`, `conQuienVive`, `estatura`, `peso`, `servicioSeguro`, `alumnoMedicado`, `nombreEnfermedad`, `alumnoSobresaliente`, `tipoDeSobreSaliente`, `alumnoConTratamientoPsicologico`, `documentoAlumnoPsicologico`, `tipoTransporte`, `tiempoTransporte`, `totalTransporteSemanal`, `nombreUniversidadFutura`, `gastoUtiles`, `gastoUniformes`, `internetEnCasa`, `dispositivoDisponibles`, `reglamentoAlumno`, `reglamentoTutor`, `firmaAlumno`, `firmaTutor`, `estatusNSS`, `numeroNSSAlumno`, `localidadSeguroSocial`, `numeroCasaAlumno`, `numeroCelularAlumno`, `idCarrera`, `idPariente`, `idGrupo`, `idDiscapacidad`) VALUES
@@ -1976,7 +1976,7 @@ INSERT INTO `alumnos` (`curp`, `noControl`, `apellidoPaterno`, `apellidoMaterno`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `calificaciones`
+-- Table structure for table `calificaciones`
 --
 
 CREATE TABLE `calificaciones` (
@@ -2003,7 +2003,7 @@ CREATE TABLE `calificaciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carreras`
+-- Table structure for table `carreras`
 --
 
 CREATE TABLE `carreras` (
@@ -2015,7 +2015,7 @@ CREATE TABLE `carreras` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `discapacidades`
+-- Table structure for table `discapacidades`
 --
 
 CREATE TABLE `discapacidades` (
@@ -2027,7 +2027,7 @@ CREATE TABLE `discapacidades` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estatusalumno`
+-- Table structure for table `estatusalumno`
 --
 
 CREATE TABLE `estatusalumno` (
@@ -2038,7 +2038,7 @@ CREATE TABLE `estatusalumno` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `justificantes`
+-- Table structure for table `justificantes`
 --
 
 CREATE TABLE `justificantes` (
@@ -2068,7 +2068,7 @@ CREATE TABLE `justificantes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `municipios`
+-- Table structure for table `municipios`
 --
 
 CREATE TABLE `municipios` (
@@ -2080,7 +2080,7 @@ CREATE TABLE `municipios` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parientes`
+-- Table structure for table `parientes`
 --
 
 CREATE TABLE `parientes` (
@@ -2097,7 +2097,7 @@ CREATE TABLE `parientes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reportes`
+-- Table structure for table `reportes`
 --
 
 CREATE TABLE `reportes` (
@@ -2126,105 +2126,108 @@ CREATE TABLE `reportes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `name` varchar(80) NOT NULL,
-  `lastname` varchar(80) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `nombre` varchar(80) NOT NULL,
+  `apellido` varchar(80) NOT NULL,
   `username` varchar(80) NOT NULL,
   `password` varchar(80) NOT NULL,
-  `mail` varchar(80) NOT NULL
+  `mail` varchar(80) NOT NULL,
+  `nombreRol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `lastname`, `username`, `password`, `mail`) VALUES
-(1, 'Luigi', 'Faccinetto', 'Faccinetto', '12345', 'luigifaccinettojaramillo4@gmail.com'),
-(2, 'Omar', 'Zavaleta', 'omar', '140200', 'omar@gmail.com');
+INSERT INTO `user` (`idUser`, `nombre`, `apellido`, `username`, `password`, `mail`, `nombreRol`) VALUES
+(1, 'Luigi', 'Faccinetto', 'Faccinetto', '12345', 'luigi@gmail.com', 'Administrador'),
+(2, 'Omar', 'Zavaleta', 'Omar', '12345', 'omar@gmail.com', 'ControlEscolar'),
+(3, 'Alondra', 'Urbina', 'Alo', '12345', 'alo@gmail.com', 'Orientacion'),
+(4, 'test', 'test', 'test', '12345', 'test@gmail.com', 'Alumno');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `calificaciones`
+-- Indexes for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
   ADD PRIMARY KEY (`idMateria`);
 
 --
--- Indices de la tabla `carreras`
+-- Indexes for table `carreras`
 --
 ALTER TABLE `carreras`
   ADD PRIMARY KEY (`idCarrera`);
 
 --
--- Indices de la tabla `discapacidades`
+-- Indexes for table `discapacidades`
 --
 ALTER TABLE `discapacidades`
   ADD PRIMARY KEY (`idDiscapacidad`);
 
 --
--- Indices de la tabla `estatusalumno`
+-- Indexes for table `estatusalumno`
 --
 ALTER TABLE `estatusalumno`
   ADD PRIMARY KEY (`idEstatus`);
 
 --
--- Indices de la tabla `justificantes`
+-- Indexes for table `justificantes`
 --
 ALTER TABLE `justificantes`
   ADD PRIMARY KEY (`idJustificante`);
 
 --
--- Indices de la tabla `municipios`
+-- Indexes for table `municipios`
 --
 ALTER TABLE `municipios`
   ADD PRIMARY KEY (`idMunicipio`);
 
 --
--- Indices de la tabla `parientes`
+-- Indexes for table `parientes`
 --
 ALTER TABLE `parientes`
   ADD PRIMARY KEY (`idPariente`);
 
 --
--- Indices de la tabla `reportes`
+-- Indexes for table `reportes`
 --
 ALTER TABLE `reportes`
   ADD PRIMARY KEY (`idReporte`);
 
 --
--- Indices de la tabla `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idUser`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `calificaciones`
+-- AUTO_INCREMENT for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
   MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15338;
 
 --
--- AUTO_INCREMENT de la tabla `estatusalumno`
+-- AUTO_INCREMENT for table `estatusalumno`
 --
 ALTER TABLE `estatusalumno`
   MODIFY `idEstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -19,7 +19,7 @@
         <h1>Cetis 57</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="login.php" method="post">
+        <form class="login-form" action="login.php" method="POST">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>INICIAR SESION</h3>
           <div class="form-group">
             <label class="control-label">USUARIO</label>

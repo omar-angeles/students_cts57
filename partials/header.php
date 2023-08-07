@@ -1,8 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['name']) || !isset($_SESSION['lastname'])) { header("Location: index.php"); exit();}
-$nombre = $_SESSION['name'];
-$apellido = $_SESSION['lastname'];
+if (!isset($_SESSION['nombreRol'])){ 
+  header("Location: index.php"); 
+  exit();
+}
+$nombreRol = $_SESSION['nombreRol'];
 ?>
 
 <!DOCTYPE html>
