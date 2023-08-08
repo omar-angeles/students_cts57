@@ -1,3 +1,8 @@
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
         }
     } else {
-        echo "Usuario o contraseña incorrectos.";
+        echo '<div id="left"><a href="index.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br><div class="alert alert-danger" role="alert">Usuario o contraseña incorrectos, intente de nuevo</div>';
+
     }
     
     $conn->close();

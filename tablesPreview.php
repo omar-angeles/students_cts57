@@ -37,7 +37,7 @@ include("conexionBD.php");
             $paginas = ceil($num_registros / $registros);
             ?>
             <h5 class="card-tittle">Resultados (<?php echo $num_registros; ?>)
-            <div id="left"><a href="home.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br>
+            <div id="left"><a href="homeAdm.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br>
           </h5>
             <div class="container_card">
               <?php while ($resultado = mysqli_fetch_assoc($busqueda)) {
