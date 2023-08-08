@@ -5,6 +5,7 @@ if (!isset($_SESSION['nombreRol'])){
   exit();
 }
 $nombreRol = $_SESSION['nombreRol'];
+// $nombre = $_SESSION['nombre'];
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,18 @@ $nombreRol = $_SESSION['nombreRol'];
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>DGETI 057</title>
 </head>
+
+<script>
+function myFunction() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Modulo en desarrollo, regresa pronto:((',
+    
+});
+}
+</script>
+
 <header>
     <h1 id="blanco">DGETI 57</h1>
     <p id="blanco">Bienvenido, <?php echo $nombreRol?></p>

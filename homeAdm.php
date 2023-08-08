@@ -43,7 +43,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">Con esta opción, usted puede realizar justificantes</p>
-          <center><a href="#" class="btn btn-outline-warning">Justificantes</a></center>
+          <center><a onclick="myFunction()" href="#" class="btn btn-outline-warning">Justificantes</a></center>
         </div>
       </div>
       <br>
@@ -56,7 +56,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">Con esta opción, usted puede realizar Reportes</p>
-          <center><a href="#" class="btn btn-outline-danger">Reportes</a></center>
+          <center><a onclick="myFunction()" href="#" class="btn btn-outline-danger">Reportes</a></center>
         </div>
       </div>
     </div>

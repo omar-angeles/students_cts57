@@ -36,10 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
         }
     } else {
-        echo '<div id="left"><a href="index.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br><div class="alert alert-danger" role="alert">Usuario o contraseña incorrectos, intente de nuevo</div>';
+        // echo '<div id="left"><a href="index.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br><div class="alert alert-danger" role="alert">Usuario o contraseña incorrectos, intente de nuevo</div>';
 
+        echo "
+        <div class='alert alert-danger'>
+        <a href='index.php' id=left class='btn btn-secondary btn-block'>Regresar</a>
+        <center><b>Datos incorrectos, verificalos e intenta de nuevo</b><br><br><a href='index.php' id=left class='btn btn-secondary btn-block' hidden>Regresar</a></center>
+        </div>
+        ";
     }
-    
     $conn->close();
 }
 ?>
