@@ -111,8 +111,8 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
         $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
 
-        //$recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
-        // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        $recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
 
 
         //Estos tienen datos nulos en la base de datos
