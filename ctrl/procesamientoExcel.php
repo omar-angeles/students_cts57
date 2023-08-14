@@ -40,24 +40,25 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
 //     $hojaActual = $documento->getSheet($indiceHoja);
 
 
-    for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
-        $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
-        $curp = trim($curp);
-
-        // empieza if de curp vacio
-        // if($curp == ""){
-        //     break;
-        // }else{
-        $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
-        $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
-        $nombres = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
-        $sexoAlumno = $hojaActual->getCellByColumnAndRow(6, $indiceFila);
-        $fotoAlumno = $hojaActual->getCellByColumnAndRow(7, $indiceFila);
-        $fechaNacimientoAlumno = $hojaActual->getCellByColumnAndRow(8, $indiceFila);
-        $edadAlumno = $hojaActual->getCellByColumnAndRow(9, $indiceFila);
-        $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
-        $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
-        $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
+    // empieza if de curp vacio
+    // if($curp == ""){
+    //     break;
+    // }else{
+    $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
+    $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
+    $nombres = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
+    $sexoAlumno = $hojaActual->getCellByColumnAndRow(6, $indiceFila);
+    $fotoAlumno = $hojaActual->getCellByColumnAndRow(7, $indiceFila);
+    $fechaNacimientoAlumno = $hojaActual->getCellByColumnAndRow(8, $indiceFila);
+    $edadAlumno = $hojaActual->getCellByColumnAndRow(9, $indiceFila);
+    $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
+    $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
+    $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+    $curpR = trim($curp);
+    if ($curpR == "") {
+        break;
+    } else {
         $noControl = $hojaActual->getCellByColumnAndRow(13, $indiceFila);
         $ultimoSemestreAlumno = $hojaActual->getCellByColumnAndRow(14, $indiceFila);
         $turnoAlumno = $hojaActual->getCellByColumnAndRow(15, $indiceFila);
@@ -73,7 +74,6 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
         //Estos tienen datos nulos en la base de datos
         $entidadFederativa = $hojaActual->getCellByColumnAndRow(24, $indiceFila);
         $localidad = $hojaActual->getCellByColumnAndRow(25, $indiceFila);
-        
 
         $codigoPostal = $hojaActual->getCellByColumnAndRow(27, $indiceFila);
         $noExterior = $hojaActual->getCellByColumnAndRow(28, $indiceFila);
@@ -113,7 +113,7 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
 
         //$recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
         // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
-        
+
 
         //Estos tienen datos nulos en la base de datos
         // $idCarrera = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
@@ -273,8 +273,8 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
             $numeroNSSAlumno = ($numeroNSSAlumno);
             $numeroNSSAlumnoNo = strlen($numeroNSSAlumno);
 
-            $localidadSeguroSocial = ($localidadSeguroSocial);
-            $localidadSeguroSocialNo = strlen($localidadSeguroSocial);
+            // $localidadSeguroSocial = ($localidadSeguroSocial);
+            // $localidadSeguroSocialNo = strlen($localidadSeguroSocial);
 
             $numeroCasaAlumno = ($numeroCasaAlumno);
             $numeroCasaAlumnoNo = strlen($numeroCasaAlumno);
@@ -369,12 +369,9 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
         } catch (Exception $e) {
             die(print_r($e->getMessage()));
         }
-
-        // } termina if de curp vacio
-
-
     }
-// }
+}
+
 echo '</div>';
 echo '<div class="alert alert-success" role="success">Carga completa checar los logs para revisar que se hayan cargado correctamente</div>';
-// header("Location: http://localhost/proyectos/students_cts57/tablesPreview.php?nume=1");
+
