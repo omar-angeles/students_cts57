@@ -14,7 +14,7 @@ require '../conexionBD.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
-$nombreArchivo = 'archivosTempExcel/archivos/prueba.xlsx';
+$nombreArchivo = 'archivosTempExcel/archivos/reinscripcion_alumnos.xlsx';
 $documento = IOFactory::load($nombreArchivo);
 $totalHojas = $documento->getSheetCount();
 
@@ -28,7 +28,7 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
 // for($indiceFila = 1; $indiceFila<=$numeroFilas; $indiceFila++){
 //     for($indiceColumna = 1; $indiceColumna <= $numeroLetra; $indiceColumna++){
 //         $valor = $hojaActual->getCellByColumnAndRow($indiceColumna, $indiceFila);
-        
+
 //         echo $valor . ' ';
 
 //     }
@@ -36,21 +36,18 @@ $numeroLetra = Coordinate::columnIndexFromString($letra);
 //     echo '<br/>';
 // }
 
+// for ($indiceHoja = 0; $indiceHoja < $totalHojas; $indiceHoja++) {
+//     $hojaActual = $documento->getSheet($indiceHoja);
 
 
-for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
+    for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
+        $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+        $curp = trim($curp);
 
-
-    
-    $curp = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
-    $curp = trim($curp);
-
-    // empieza if de curp vacio
-    // if($curp == ""){
-    //     break;
-    // }else{
-
-        $noControl = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+        // empieza if de curp vacio
+        // if($curp == ""){
+        //     break;
+        // }else{
         $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
         $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
         $nombres = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
@@ -58,57 +55,65 @@ for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
         $fotoAlumno = $hojaActual->getCellByColumnAndRow(7, $indiceFila);
         $fechaNacimientoAlumno = $hojaActual->getCellByColumnAndRow(8, $indiceFila);
         $edadAlumno = $hojaActual->getCellByColumnAndRow(9, $indiceFila);
-        $ultimoSemestreAlumno = $hojaActual->getCellByColumnAndRow(13, $indiceFila);
-        $turnoAlumno = $hojaActual->getCellByColumnAndRow(14, $indiceFila);
-        $grupoAlumno = $hojaActual->getCellByColumnAndRow(15, $indiceFila);
-        $especialidadAlumno = $hojaActual->getCellByColumnAndRow(16, $indiceFila);
-        $becaBenito = $hojaActual->getCellByColumnAndRow(17, $indiceFila);
-        $trabajaAlumno = $hojaActual->getCellByColumnAndRow(18, $indiceFila);
-        $tipoSecundaria = $hojaActual->getCellByColumnAndRow(19, $indiceFila);
-        $hablaLenguaIndigena = $hojaActual->getCellByColumnAndRow(21, $indiceFila);
-        $domicilioAlumno = $hojaActual->getCellByColumnAndRow(22, $indiceFila);
+        $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
+        $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
+        $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+        $noControl = $hojaActual->getCellByColumnAndRow(13, $indiceFila);
+        $ultimoSemestreAlumno = $hojaActual->getCellByColumnAndRow(14, $indiceFila);
+        $turnoAlumno = $hojaActual->getCellByColumnAndRow(15, $indiceFila);
+        $grupoAlumno = $hojaActual->getCellByColumnAndRow(16, $indiceFila);
+        $especialidadAlumno = $hojaActual->getCellByColumnAndRow(17, $indiceFila);
+        $becaBenito = $hojaActual->getCellByColumnAndRow(18, $indiceFila);
+        $trabajaAlumno = $hojaActual->getCellByColumnAndRow(19, $indiceFila);
+        $tipoSecundaria = $hojaActual->getCellByColumnAndRow(20, $indiceFila);
+
+        $hablaLenguaIndigena = $hojaActual->getCellByColumnAndRow(22, $indiceFila);
+        $domicilioAlumno = $hojaActual->getCellByColumnAndRow(23, $indiceFila);
 
         //Estos tienen datos nulos en la base de datos
-        $localidad = $hojaActual->getCellByColumnAndRow(24, $indiceFila);
         $entidadFederativa = $hojaActual->getCellByColumnAndRow(24, $indiceFila);
+        $localidad = $hojaActual->getCellByColumnAndRow(25, $indiceFila);
+        
 
-        $codigoPostal = $hojaActual->getCellByColumnAndRow(26, $indiceFila);
-        $noExterior = $hojaActual->getCellByColumnAndRow(27, $indiceFila);
-        $noInterior = $hojaActual->getCellByColumnAndRow(28, $indiceFila);
-        $descripcionCasa = $hojaActual->getCellByColumnAndRow(29, $indiceFila);
+        $codigoPostal = $hojaActual->getCellByColumnAndRow(27, $indiceFila);
+        $noExterior = $hojaActual->getCellByColumnAndRow(28, $indiceFila);
+        $noInterior = $hojaActual->getCellByColumnAndRow(29, $indiceFila);
+        $descripcionCasa = $hojaActual->getCellByColumnAndRow(30, $indiceFila);
 
-        $viveConPadres = $hojaActual->getCellByColumnAndRow(59, $indiceFila);
-        $conQuienVive = $hojaActual->getCellByColumnAndRow(60, $indiceFila);
-        $estatura = $hojaActual->getCellByColumnAndRow(61, $indiceFila);
-        $peso = $hojaActual->getCellByColumnAndRow(62, $indiceFila);
-        $servicioSeguro = $hojaActual->getCellByColumnAndRow(63, $indiceFila);
-        $alumnoMedicado = $hojaActual->getCellByColumnAndRow(64, $indiceFila);
-        $nombreEnfermedad = $hojaActual->getCellByColumnAndRow(65, $indiceFila);
-        $alumnoSobresaliente = $hojaActual->getCellByColumnAndRow(68, $indiceFila);
+        $viveConPadres = $hojaActual->getCellByColumnAndRow(62, $indiceFila);
+        $conQuienVive = $hojaActual->getCellByColumnAndRow(63, $indiceFila);
+        $estatura = $hojaActual->getCellByColumnAndRow(64, $indiceFila);
+        $peso = $hojaActual->getCellByColumnAndRow(65, $indiceFila);
+        $servicioSeguro = $hojaActual->getCellByColumnAndRow(66, $indiceFila);
+        $alumnoMedicado = $hojaActual->getCellByColumnAndRow(67, $indiceFila);
+        $nombreEnfermedad = $hojaActual->getCellByColumnAndRow(68, $indiceFila);
 
-        $tipoSobresaliente = $hojaActual->getCellByColumnAndRow(69, $indiceFila);
-        $alumnoConTratamientoPsicologico = $hojaActual->getCellByColumnAndRow(70, $indiceFila);
-        $documentoAlumnoPsicologico = $hojaActual->getCellByColumnAndRow(71, $indiceFila);
+        $alumnoSobresaliente = $hojaActual->getCellByColumnAndRow(71, $indiceFila);
 
-        $tipoTransporte = $hojaActual->getCellByColumnAndRow(72, $indiceFila);
-        $tiempoTransporte = $hojaActual->getCellByColumnAndRow(73, $indiceFila);
-        $totalTransporteSemanal = $hojaActual->getCellByColumnAndRow(74, $indiceFila);
-        $nombreUniversidadFutura = $hojaActual->getCellByColumnAndRow(75, $indiceFila);
+        $tipoSobresaliente = $hojaActual->getCellByColumnAndRow(72, $indiceFila);
+        $alumnoConTratamientoPsicologico = $hojaActual->getCellByColumnAndRow(73, $indiceFila);
+        $documentoAlumnoPsicologico = $hojaActual->getCellByColumnAndRow(74, $indiceFila);
 
-        $gastoUtiles = $hojaActual->getCellByColumnAndRow(79, $indiceFila);
-        $gastoUniformes = $hojaActual->getCellByColumnAndRow(80, $indiceFila);
-        $internetEnCasa = $hojaActual->getCellByColumnAndRow(81, $indiceFila);
-        $dispositivoDisponibles = $hojaActual->getCellByColumnAndRow(82, $indiceFila);
-        $reglamentoAlumno = $hojaActual->getCellByColumnAndRow(83, $indiceFila);
-        $reglamentoTutor = $hojaActual->getCellByColumnAndRow(84, $indiceFila);
+        $tipoTransporte = $hojaActual->getCellByColumnAndRow(75, $indiceFila);
+        $tiempoTransporte = $hojaActual->getCellByColumnAndRow(76, $indiceFila);
+        $totalTransporteSemanal = $hojaActual->getCellByColumnAndRow(77, $indiceFila);
+        $nombreUniversidadFutura = $hojaActual->getCellByColumnAndRow(78, $indiceFila);
 
-        $firmaAlumno = $hojaActual->getCellByColumnAndRow(85, $indiceFila);
-        $firmaTutor = $hojaActual->getCellByColumnAndRow(86, $indiceFila);
-        $estatusNSS = $hojaActual->getCellByColumnAndRow(87, $indiceFila);
-        $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(88, $indiceFila);
-        $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
-        $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
-        $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
+        $gastoUtiles = $hojaActual->getCellByColumnAndRow(82, $indiceFila);
+        $gastoUniformes = $hojaActual->getCellByColumnAndRow(83, $indiceFila);
+        $internetEnCasa = $hojaActual->getCellByColumnAndRow(84, $indiceFila);
+        $dispositivoDisponibles = $hojaActual->getCellByColumnAndRow(85, $indiceFila);
+        $reglamentoAlumno = $hojaActual->getCellByColumnAndRow(86, $indiceFila);
+        $reglamentoTutor = $hojaActual->getCellByColumnAndRow(87, $indiceFila);
+
+        $firmaAlumno = $hojaActual->getCellByColumnAndRow(88, $indiceFila);
+        $firmaTutor = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
+        $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
+
+        //$recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        
 
         //Estos tienen datos nulos en la base de datos
         // $idCarrera = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
@@ -116,271 +121,260 @@ for($indiceFila = 2; $indiceFila<=$numeroFilas; $indiceFila++){
         // $idGrupo = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
         // $idDiscapacidad = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
 
-        $sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, sexoAlumno, fotoAlumno, fechaNacimientoAlumno, edadAlumno, ultimoSemestreAlumno, turnoAlumno, grupoAlumno, especialidadAlumno, becaBenito, trabajaAlumno, tipoSecundaria, hablaLenguaIndigena, domicilioAlumno, localidad, entidadFederativa, codigoPostal, noExterior, noInterior, descripcionCasa, viveConPadres, conQuienVive, estatura, peso, servicioSeguro, alumnoMedicado, nombreEnfermedad, alumnoSobresaliente, tipoDeSobreSaliente, alumnoConTratamientoPsicologico, documentoAlumnoPsicologico, tipoTransporte, tiempoTransporte, totalTransporteSemanal, nombreUniversidadFutura, gastoUtiles, gastoUniformes, internetEnCasa, dispositivoDisponibles, reglamentoAlumno, reglamentoTutor, firmaAlumno, firmaTutor, estatusNSS, numeroNSSAlumno, localidadSeguroSocial, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$sexoAlumno', '$fotoAlumno', '$fechaNacimientoAlumno', '$edadAlumno', '$ultimoSemestreAlumno', '$turnoAlumno', '$grupoAlumno', '$especialidadAlumno', '$becaBenito', '$trabajaAlumno', '$tipoSecundaria', '$hablaLenguaIndigena', '$domicilioAlumno', '$localidad', '$entidadFederativa', '$codigoPostal', '$noExterior', '$noInterior', '$descripcionCasa', '$viveConPadres', '$conQuienVive', '$estatura', '$peso', '$servicioSeguro', '$alumnoMedicado', '$nombreEnfermedad', '$alumnoSobresaliente', '$tipoSobresaliente', '$alumnoConTratamientoPsicologico', '$documentoAlumnoPsicologico', '$tipoTransporte', '$tiempoTransporte', '$totalTransporteSemanal', '$nombreUniversidadFutura', '$gastoUtiles', '$gastoUniformes', '$internetEnCasa', '$dispositivoDisponibles', '$reglamentoAlumno', '$reglamentoTutor', '$firmaAlumno', '$firmaTutor', '$estatusNSS', '$numeroNSSAlumno', '$localidadSeguroSocial', '$numeroCasaAlumno', '$numeroCelularAlumno')";
+        $sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, sexoAlumno, fotoAlumno, fechaNacimientoAlumno, edadAlumno, ultimoSemestreAlumno, turnoAlumno, grupoAlumno, especialidadAlumno, becaBenito, trabajaAlumno, tipoSecundaria, hablaLenguaIndigena, domicilioAlumno, localidad, entidadFederativa, codigoPostal, noExterior, noInterior, descripcionCasa, viveConPadres, conQuienVive, estatura, peso, servicioSeguro, alumnoMedicado, nombreEnfermedad, alumnoSobresaliente, tipoDeSobreSaliente, alumnoConTratamientoPsicologico, documentoAlumnoPsicologico, tipoTransporte, tiempoTransporte, totalTransporteSemanal, nombreUniversidadFutura, gastoUtiles, gastoUniformes, internetEnCasa, dispositivoDisponibles, reglamentoAlumno, reglamentoTutor, firmaAlumno, firmaTutor, estatusNSS, numeroNSSAlumno, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$sexoAlumno', '$fotoAlumno', '$fechaNacimientoAlumno', '$edadAlumno', '$ultimoSemestreAlumno', '$turnoAlumno', '$grupoAlumno', '$especialidadAlumno', '$becaBenito', '$trabajaAlumno', '$tipoSecundaria', '$hablaLenguaIndigena', '$domicilioAlumno', '$localidad', '$entidadFederativa', '$codigoPostal', '$noExterior', '$noInterior', '$descripcionCasa', '$viveConPadres', '$conQuienVive', '$estatura', '$peso', '$servicioSeguro', '$alumnoMedicado', '$nombreEnfermedad', '$alumnoSobresaliente', '$tipoSobresaliente', '$alumnoConTratamientoPsicologico', '$documentoAlumnoPsicologico', '$tipoTransporte', '$tiempoTransporte', '$totalTransporteSemanal', '$nombreUniversidadFutura', '$gastoUtiles', '$gastoUniformes', '$internetEnCasa', '$dispositivoDisponibles', '$reglamentoAlumno', '$reglamentoTutor', '$firmaAlumno', '$firmaTutor', '$estatusNSS', '$numeroNSSAlumno', '$numeroCasaAlumno', '$numeroCelularAlumno')";
         $mysqli->query($sql);
 
-        try{
+        try {
 
-        $curp = ($curp);
-        $curpNo = strlen($curp);
+            $curp = ($curp);
+            $curpNo = strlen($curp);
 
-        $noControl =($noControl);
-        $noControlNo = strlen($noControl);
+            $noControl = ($noControl);
+            $noControlNo = strlen($noControl);
 
-        $apellidoPaterno = ($apellidoPaterno);
-        $apellidoPaternoNo = strlen($apellidoPaterno);
+            $apellidoPaterno = ($apellidoPaterno);
+            $apellidoPaternoNo = strlen($apellidoPaterno);
 
-        $apellidoMaterno = ($apellidoMaterno);
-        $apellidoMaternoNo = strlen($apellidoMaterno);
+            $apellidoMaterno = ($apellidoMaterno);
+            $apellidoMaternoNo = strlen($apellidoMaterno);
 
-        $nombres = ($nombres);
-        $nombresNo = strlen($nombres);
+            $nombres = ($nombres);
+            $nombresNo = strlen($nombres);
 
-        $sexoAlumno = ($sexoAlumno);
-        $sexoAlumnoNo = strlen($sexoAlumno);
+            $sexoAlumno = ($sexoAlumno);
+            $sexoAlumnoNo = strlen($sexoAlumno);
 
-        $fotoAlumno = ($fotoAlumno);
-        $fotoAlumnoNo = strlen($fotoAlumno);
+            $fotoAlumno = ($fotoAlumno);
+            $fotoAlumnoNo = strlen($fotoAlumno);
 
-        $fechaNacimientoAlumno = ($fechaNacimientoAlumno);
-        $fechaNacimientoAlumnoNo = strlen($fechaNacimientoAlumno);
-        
-        $edadAlumno = ($edadAlumno);
-        $edadAlumnoNo = strlen($edadAlumno);
+            $fechaNacimientoAlumno = ($fechaNacimientoAlumno);
+            $fechaNacimientoAlumnoNo = strlen($fechaNacimientoAlumno);
 
-        $ultimoSemestreAlumno = ($ultimoSemestreAlumno);
-        $ultimoSemestreAlumnoNo = strlen($ultimoSemestreAlumno);
-        
-        $turnoAlumno = ($turnoAlumno);
-        $turnoAlumnoNo = strlen($turnoAlumno);
+            $edadAlumno = ($edadAlumno);
+            $edadAlumnoNo = strlen($edadAlumno);
 
-        $grupoAlumno = ($grupoAlumno);
-        $grupoAlumnoNo = strlen($grupoAlumno);
+            $ultimoSemestreAlumno = ($ultimoSemestreAlumno);
+            $ultimoSemestreAlumnoNo = strlen($ultimoSemestreAlumno);
 
-        $especialidadAlumno = ($especialidadAlumno);
-        $especialidadAlumnoNo = strlen($especialidadAlumno);
+            $turnoAlumno = ($turnoAlumno);
+            $turnoAlumnoNo = strlen($turnoAlumno);
 
-        $becaBenito = ($becaBenito);
-        $becaBenitoNo = strlen($becaBenito);
+            $grupoAlumno = ($grupoAlumno);
+            $grupoAlumnoNo = strlen($grupoAlumno);
 
-        $trabajaAlumno = ($trabajaAlumno);
-        $trabajaAlumnoNo = strlen($trabajaAlumno);
+            $especialidadAlumno = ($especialidadAlumno);
+            $especialidadAlumnoNo = strlen($especialidadAlumno);
 
-        $tipoSecundaria = ($tipoSecundaria);
-        $tipoSecundariaNo = strlen($tipoSecundaria);
+            $becaBenito = ($becaBenito);
+            $becaBenitoNo = strlen($becaBenito);
 
-        $hablaLenguaIndigena = ($hablaLenguaIndigena);
-        $hablaLenguaIndigenaNo = strlen($hablaLenguaIndigena);
+            $trabajaAlumno = ($trabajaAlumno);
+            $trabajaAlumnoNo = strlen($trabajaAlumno);
 
-        $domicilioAlumno = ($domicilioAlumno);
-        $domicilioAlumnoNo = strlen($domicilioAlumno);
+            $tipoSecundaria = ($tipoSecundaria);
+            $tipoSecundariaNo = strlen($tipoSecundaria);
 
-        // $localidad = ($localidad);
-        // $localidadNo = strlen($localidad);
+            $hablaLenguaIndigena = ($hablaLenguaIndigena);
+            $hablaLenguaIndigenaNo = strlen($hablaLenguaIndigena);
 
-        // $entidadFederativa = ($entidadFederativa);
-        // $entidadFederativaNo = strlen($entidadFederativa);
+            $domicilioAlumno = ($domicilioAlumno);
+            $domicilioAlumnoNo = strlen($domicilioAlumno);
 
-        $codigoPostal = ($codigoPostal);
-        $codigoPostalNo = strlen($codigoPostal);
+            // $localidad = ($localidad);
+            // $localidadNo = strlen($localidad);
 
-        $noExterior = ($noExterior);
-        $noExteriorNo = strlen($noExterior);
+            // $entidadFederativa = ($entidadFederativa);
+            // $entidadFederativaNo = strlen($entidadFederativa);
 
-        // $noInterior = ($noInterior);
-        // $noInteriorNo = strlen($noInterior);
+            $codigoPostal = ($codigoPostal);
+            $codigoPostalNo = strlen($codigoPostal);
 
-        $descripcionCasa = ($descripcionCasa);
-        $descripcionCasaNo = strlen($descripcionCasa);
+            $noExterior = ($noExterior);
+            $noExteriorNo = strlen($noExterior);
 
-        $viveConPadres = ($viveConPadres);
-        $viveConPadresNo = strlen($viveConPadres);
+            // $noInterior = ($noInterior);
+            // $noInteriorNo = strlen($noInterior);
 
-        $conQuienVive = ($conQuienVive);
-        $conQuienViveNo = strlen($conQuienVive);
+            $descripcionCasa = ($descripcionCasa);
+            $descripcionCasaNo = strlen($descripcionCasa);
 
-        $estatura = ($estatura);
-        $estaturaNo = strlen($estatura);
+            $viveConPadres = ($viveConPadres);
+            $viveConPadresNo = strlen($viveConPadres);
 
-        $peso = ($peso);
-        $pesoNo = strlen($peso);
+            $conQuienVive = ($conQuienVive);
+            $conQuienViveNo = strlen($conQuienVive);
 
-        $servicioSeguro = ($servicioSeguro);
-        $servicioSeguroNo = strlen($servicioSeguro);
+            $estatura = ($estatura);
+            $estaturaNo = strlen($estatura);
 
-        $alumnoMedicado = ($alumnoMedicado);
-        $alumnoMedicadoNo = strlen($alumnoMedicado);
+            $peso = ($peso);
+            $pesoNo = strlen($peso);
 
-        $nombreEnfermedad = ($nombreEnfermedad);
-        $nombreEnfermedadNo = strlen($nombreEnfermedad);
+            $servicioSeguro = ($servicioSeguro);
+            $servicioSeguroNo = strlen($servicioSeguro);
 
-        $alumnoSobresaliente = ($alumnoSobresaliente);
-        $alumnoSobresalienteNo = strlen($alumnoSobresaliente);
+            $alumnoMedicado = ($alumnoMedicado);
+            $alumnoMedicadoNo = strlen($alumnoMedicado);
 
-        $tipoSobresaliente = ($tipoSobresaliente);
-        $tipoSobresalienteNo = strlen($tipoSobresaliente);
+            $nombreEnfermedad = ($nombreEnfermedad);
+            $nombreEnfermedadNo = strlen($nombreEnfermedad);
 
-        $alumnoConTratamientoPsicologico = ($alumnoConTratamientoPsicologico);
-        $alumnoConTratamientoPsicologicoNo = strlen($alumnoConTratamientoPsicologico);
+            $alumnoSobresaliente = ($alumnoSobresaliente);
+            $alumnoSobresalienteNo = strlen($alumnoSobresaliente);
 
-        // $documentoAlumnoPsicologico = ($documentoAlumnoPsicologico);
-        // $documentoAlumnoPsicologicoNo = strlen($documentoAlumnoPsicologico);
+            $tipoSobresaliente = ($tipoSobresaliente);
+            $tipoSobresalienteNo = strlen($tipoSobresaliente);
 
-        $tipoTransporte = ($tipoTransporte);
-        $tipoTransporteNo = strlen($tipoTransporte);
+            $alumnoConTratamientoPsicologico = ($alumnoConTratamientoPsicologico);
+            $alumnoConTratamientoPsicologicoNo = strlen($alumnoConTratamientoPsicologico);
 
-        $tiempoTransporte = ($tiempoTransporte);
-        $tiempoTransporteNo = strlen($tiempoTransporte);
+            // $documentoAlumnoPsicologico = ($documentoAlumnoPsicologico);
+            // $documentoAlumnoPsicologicoNo = strlen($documentoAlumnoPsicologico);
 
-        $totalTransporteSemanal = ($totalTransporteSemanal);
-        $totalTransporteSemanalNo = strlen($totalTransporteSemanal);
+            $tipoTransporte = ($tipoTransporte);
+            $tipoTransporteNo = strlen($tipoTransporte);
 
-        // $nombreUniversidadFutura = ($nombreUniversidadFutura);
-        // $nombreUniversidadFuturaNo = strlen($nombreUniversidadFutura);
-        
-        $gastoUtiles = ($gastoUtiles);
-        $gastoUtilesNo = strlen($gastoUtiles);
+            $tiempoTransporte = ($tiempoTransporte);
+            $tiempoTransporteNo = strlen($tiempoTransporte);
 
-        $gastoUniformes = ($gastoUniformes);
-        $gastoUniformesNo = strlen($gastoUniformes);
+            $totalTransporteSemanal = ($totalTransporteSemanal);
+            $totalTransporteSemanalNo = strlen($totalTransporteSemanal);
 
-        $internetEnCasa = ($internetEnCasa);
-        $internetEnCasaNo = strlen($internetEnCasa);
+            // $nombreUniversidadFutura = ($nombreUniversidadFutura);
+            // $nombreUniversidadFuturaNo = strlen($nombreUniversidadFutura);
 
-        $dispositivoDisponibles = ($dispositivoDisponibles);
-        $dispositivoDisponiblesNo = strlen($dispositivoDisponibles);
+            $gastoUtiles = ($gastoUtiles);
+            $gastoUtilesNo = strlen($gastoUtiles);
 
-        $reglamentoAlumno = ($reglamentoAlumno);
-        $reglamentoAlumnoNo = strlen($reglamentoAlumno);
+            $gastoUniformes = ($gastoUniformes);
+            $gastoUniformesNo = strlen($gastoUniformes);
 
-        $reglamentoTutor = ($reglamentoTutor);
-        $reglamentoTutorNo = strlen($reglamentoTutor);
+            $internetEnCasa = ($internetEnCasa);
+            $internetEnCasaNo = strlen($internetEnCasa);
 
-        $firmaAlumno = ($firmaAlumno);
-        $firmaAlumnoNo = strlen($firmaAlumno);
+            $dispositivoDisponibles = ($dispositivoDisponibles);
+            $dispositivoDisponiblesNo = strlen($dispositivoDisponibles);
 
-        $firmaTutor = ($firmaTutor);
-        $firmaTutorNo = strlen($firmaTutor);
+            $reglamentoAlumno = ($reglamentoAlumno);
+            $reglamentoAlumnoNo = strlen($reglamentoAlumno);
 
-        $estatusNSS = ($estatusNSS);
-        $estatusNSSNo = strlen($estatusNSS);
+            $reglamentoTutor = ($reglamentoTutor);
+            $reglamentoTutorNo = strlen($reglamentoTutor);
 
-        $numeroNSSAlumno = ($numeroNSSAlumno);
-        $numeroNSSAlumnoNo = strlen($numeroNSSAlumno);
+            $firmaAlumno = ($firmaAlumno);
+            $firmaAlumnoNo = strlen($firmaAlumno);
 
-        $localidadSeguroSocial = ($localidadSeguroSocial);
-        $localidadSeguroSocialNo = strlen($localidadSeguroSocial);
+            $firmaTutor = ($firmaTutor);
+            $firmaTutorNo = strlen($firmaTutor);
 
-        $numeroCasaAlumno = ($numeroCasaAlumno);
-        $numeroCasaAlumnoNo = strlen($numeroCasaAlumno);
+            $estatusNSS = ($estatusNSS);
+            $estatusNSSNo = strlen($estatusNSS);
 
-        $numeroCelularAlumno = ($numeroCelularAlumno);
-        $numeroCelularAlumnoNo = strlen($numeroCelularAlumno);
+            $numeroNSSAlumno = ($numeroNSSAlumno);
+            $numeroNSSAlumnoNo = strlen($numeroNSSAlumno);
 
+            $localidadSeguroSocial = ($localidadSeguroSocial);
+            $localidadSeguroSocialNo = strlen($localidadSeguroSocial);
 
-        if (($curpNo < 17) or ($curpNo > 18)) {
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
-        }else if ($noControlNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se encuentran datos en la columna</div>';
-        }else if ($apellidoPaternoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoMaterno . ' ' . ' debido a que no se ingreso el apellido paterno del alumno</div>';
-        }else if ($apellidoMaternoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . ' debido a que no se ingreso el apellido materno del alumno</div>';
-        }else if ($nombresNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el nombre del alumno</div>';
-        }else if ($sexoAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el sexo del alumno</div>';
-        }else if ($fotoAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el url de la foto del alumno</div>';
-        }else if ($fechaNacimientoAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la fecha de nacimiento del alumno</div>';
-        }else if ($edadAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la edad del alumno</div>';
-        }else if ($ultimoSemestreAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el ultimo semestre del alumno</div>';
-        }else if ($turnoAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el turno del alumno</div>';
-        }else if ($grupoAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el grupo del alumno</div>';
-        }else if ($especialidadAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la especialidad del alumno</div>';
-        }else if ($becaBenitoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene beca o no</div>';
-        }else if ($trabajaAlumnoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno trabaja</div>';
-        }else if ($tipoSecundariaNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tipo de secundaria del alumno</div>';
-        }else if ($hablaLenguaIndigenaNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno habla alguna lengua indigena</div>';
-        }else if ($domicilioAlumnoNo<5){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el domicilio del alumno</div>';
-        }else if ($codigoPostalNo<3){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el codigo postal del alumno</div>';
-        }else if ($noExteriorNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el numero exterior del alumno</div>';
-        }else if ($descripcionCasaNo<6){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la descripcion de la casa del alumno</div>';
-        }else if ($viveConPadresNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno vive con sus padres o no</div>';
-        }else if ($estaturaNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la estatura del alumno</div>';
-        }else if ($pesoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el peso del alumno</div>';
-        }else if ($servicioSeguroNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene algun servicio de seguro</div>';
-        }else if ($alumnoMedicadoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno esta medicado</div>';
-        }else if ($alumnoSobresalienteNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno es sobresaliente</div>';
-        }else if ($tipoSobresalienteNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el url de la foto del alumno</div>';
-        }else if ($alumnoConTratamientoPsicologicoNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene algun tratamiento psicologico</div>';
-        }else if ($tipoTransporteNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tipo de transporte que utiliza el alumno</div>';
-        }else if ($tiempoTransporteNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tiempo que tarda el alumno en el transporte</div>';
-        }else if ($totalTransporteSemanalNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el total del transporte semanal que utiliza el alumno</div>';
-        }else if ($gastoUtilesNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el gasto en utiles del alumno</div>';
-        }else if ($gastoUniformesNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el gasto de uniformes del alumno</div>';
-        }else if ($internetEnCasaNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene internet en casa o no</div>';
-        }else if ($dispositivoDisponiblesNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso cuantos dispositivos tiene el alumno disponibles</div>';
-        }else if ($reglamentoAlumnoNo<8){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el reglamento del alumno</div>';
-        }else if ($reglamentoTutorNo<8){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres .' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso el reglamento del tutor</div>';
-        }else if ($firmaAlumnoNo<8){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso la firma del alumno</div>';
-        }else if ($firmaTutorNo<8){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso la firma del tutor </div>';
-        }else if ($estatusNSSNo<1){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso el estatus actual del alumno</div>';
-        }else if ($numeroNSSAlumnoNo<7){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso el numero de seguro social del alumno</div>';
-        }else if ($localidadSeguroSocialNo<3){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso la localidad del seguro social del alumno</div>';
-        }else if ($numeroCasaAlumnoNo<7){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso el numero de casa del alumno</div>';
-        }else if ($numeroCelularAlumnoNo<7){
-            echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' .$apellidoPaterno . ' ' .$apellidoMaterno . ' debido a que no se ingreso el numero de celular del alumno</div>';
-        }
+            $numeroCasaAlumno = ($numeroCasaAlumno);
+            $numeroCasaAlumnoNo = strlen($numeroCasaAlumno);
+
+            $numeroCelularAlumno = ($numeroCelularAlumno);
+            $numeroCelularAlumnoNo = strlen($numeroCelularAlumno);
 
 
-        }
-        catch(Exception $e){
+            if (($curpNo < 17) or ($curpNo > 18)) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
+            } else if ($noControlNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no ingreso su numero de control</div>';
+            } else if ($apellidoPaternoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoMaterno . ' ' . ' debido a que no se ingreso el apellido paterno del alumno</div>';
+            } else if ($apellidoMaternoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . ' debido a que no se ingreso el apellido materno del alumno</div>';
+            } else if ($nombresNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el nombre del alumno</div>';
+            } else if ($sexoAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el sexo del alumno</div>';
+            } else if ($fotoAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el url de la foto del alumno</div>';
+            } else if ($fechaNacimientoAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la fecha de nacimiento del alumno</div>';
+            } else if ($edadAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la edad del alumno</div>';
+            } else if ($ultimoSemestreAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el ultimo semestre del alumno</div>';
+            } else if ($turnoAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el turno del alumno</div>';
+            } else if ($grupoAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el grupo del alumno</div>';
+            } else if ($especialidadAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la especialidad del alumno</div>';
+            } else if ($becaBenitoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene beca o no</div>';
+            } else if ($trabajaAlumnoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno trabaja</div>';
+            } else if ($tipoSecundariaNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tipo de secundaria del alumno</div>';
+            } else if ($hablaLenguaIndigenaNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno habla alguna lengua indigena</div>';
+            } else if ($domicilioAlumnoNo < 4) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el domicilio del alumno</div>';
+            } else if ($codigoPostalNo < 3) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el codigo postal del alumno</div>';
+            } else if ($noExteriorNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el numero exterior del alumno</div>';
+            } else if ($descripcionCasaNo < 4) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la descripcion de la casa del alumno</div>';
+            } else if ($viveConPadresNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno vive con sus padres o no</div>';
+            } else if ($estaturaNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la estatura del alumno</div>';
+            } else if ($pesoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el peso del alumno</div>';
+            } else if ($servicioSeguroNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene algun servicio de seguro</div>';
+            } else if ($alumnoMedicadoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno esta medicado</div>';
+            } else if ($alumnoSobresalienteNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno es sobresaliente</div>';
+            } else if ($tipoSobresalienteNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el url de la foto del alumno</div>';
+            } else if ($alumnoConTratamientoPsicologicoNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene algun tratamiento psicologico</div>';
+            } else if ($tipoTransporteNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tipo de transporte que utiliza el alumno</div>';
+            } else if ($tiempoTransporteNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el tiempo que tarda el alumno en el transporte</div>';
+            } else if ($totalTransporteSemanalNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el total del transporte semanal que utiliza el alumno</div>';
+            } else if ($gastoUtilesNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el gasto en utiles del alumno</div>';
+            } else if ($gastoUniformesNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el gasto de uniformes del alumno</div>';
+            } else if ($internetEnCasaNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso si el alumno tiene internet en casa o no</div>';
+            } else if ($dispositivoDisponiblesNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso cuantos dispositivos tiene el alumno disponibles</div>';
+            } else if ($reglamentoAlumnoNo < 8) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el reglamento del alumno</div>';
+            } else if ($firmaAlumnoNo < 8) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso la firma del alumno</div>';
+            } else if ($estatusNSSNo < 1) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el estatus actual del alumno</div>';
+            } else if ($numeroNSSAlumnoNo < 7) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el numero de seguro social del alumno</div>';
+            } else if ($numeroCelularAlumnoNo < 7) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no se ingreso el numero de celular del alumno</div>';
+            }
+        } catch (Exception $e) {
             die(print_r($e->getMessage()));
         }
 
-    // } termina if de curp vacio
+        // } termina if de curp vacio
 
-        
-}
+
+    }
+// }
 echo '</div>';
 echo '<div class="alert alert-success" role="success">Carga completa checar los logs para revisar que se hayan cargado correctamente</div>';
 // header("Location: http://localhost/proyectos/students_cts57/tablesPreview.php?nume=1");
-            
