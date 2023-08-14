@@ -10,6 +10,7 @@
 
 require '../vendor/autoload.php';
 require '../conexionBD.php';
+require 'funciones.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
@@ -111,8 +112,8 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
         $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
 
-        $recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
-        $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        //$recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
+        // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
 
 
         //Estos tienen datos nulos en la base de datos
@@ -282,9 +283,19 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
             $numeroCelularAlumno = ($numeroCelularAlumno);
             $numeroCelularAlumnoNo = strlen($numeroCelularAlumno);
 
+            $validacionCURP = validacionCURP($mysqli, $curpNo);
 
-            if (($curpNo < 17) or ($curpNo > 18)) {
-                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
+            if ($validacionCURP>=1){
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP ya existe en la base de datos.</div>';
+            
+
+
+
+
+            // if (($curpNo < 17) or ($curpNo > 18)) {
+            //     echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
+
+
             } else if ($noControlNo < 1) {
                 echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no ingreso su numero de control</div>';
             } else if ($apellidoPaternoNo < 1) {
