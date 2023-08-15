@@ -4,11 +4,14 @@ require '../conexionBD.php';
 
 
 function validacionCURP($mysqli, $curp){
-    $sql = "SELECT * FROM alumnos WHERE curp = '$curp'";
+    $sql = "SELECT * FROM alumnos WHERE curp = 'curp'";
+    $ejectSQL = $mysqli->prepare($sql);
+    $parametros = array($curp);
+    $ejectSQL->execute($parametros);
+    $registros = $ejectSQL->fetchAll();
+    $contadorRegistros = count($registros);
+    return $contadorRegistros;
 
 }
-
-echo validacionCURP($mysqli, 'ZAAO010828HMCVNMA4');
-
 
 ?>

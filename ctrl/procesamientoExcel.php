@@ -25,27 +25,11 @@ $letra = $hojaActual->getHighestColumn();
 
 $numeroLetra = Coordinate::columnIndexFromString($letra);
 
-// Recorrido dinamico de las celdas
-// for($indiceFila = 1; $indiceFila<=$numeroFilas; $indiceFila++){
-//     for($indiceColumna = 1; $indiceColumna <= $numeroLetra; $indiceColumna++){
-//         $valor = $hojaActual->getCellByColumnAndRow($indiceColumna, $indiceFila);
-
-//         echo $valor . ' ';
-
-//     }
-//     echo '<br/>';
-//     echo '<br/>';
-// }
-
 // for ($indiceHoja = 0; $indiceHoja < $totalHojas; $indiceHoja++) {
 //     $hojaActual = $documento->getSheet($indiceHoja);
 
 
 for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
-    // empieza if de curp vacio
-    // if($curp == ""){
-    //     break;
-    // }else{
     $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
     $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
     $nombres = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
@@ -112,7 +96,6 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
         $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
 
-        //$recursadorMaterias = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
         // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
 
 
@@ -283,19 +266,8 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
             $numeroCelularAlumno = ($numeroCelularAlumno);
             $numeroCelularAlumnoNo = strlen($numeroCelularAlumno);
 
-            $validacionCURP = validacionCURP($mysqli, $curpNo);
-
-            if ($validacionCURP>=1){
-                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP ya existe en la base de datos.</div>';
-            
-
-
-
-
-            // if (($curpNo < 17) or ($curpNo > 18)) {
-            //     echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
-
-
+            if (($curpNo != 18)) {
+                echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
             } else if ($noControlNo < 1) {
                 echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que no ingreso su numero de control</div>';
             } else if ($apellidoPaternoNo < 1) {

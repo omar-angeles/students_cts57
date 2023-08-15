@@ -33,6 +33,19 @@
       <br>
     </div>
 
+    <div id="example" class="col-lg-6">
+      <div class="card border-dark">
+        <div class="card-header bg-dark text-white">
+          Listado de campos en base de datos
+        </div>
+        <div class="card-body">
+          <p class="card-text">Con esta opción, usted puede ver el listado de campos y hacer una comparativa de los campos que va a subir a la base de datos con los campos de su archivo excel</p>
+          <center><a href="datosBDView_ControlEscolar.php?nume=1.php" class="btn btn-outline-dark">Listado de campos actuales</a></center>
+        </div>
+      </div>
+      <br>
+    </div>
+
   </div>
     
   </div>
