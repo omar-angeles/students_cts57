@@ -21,17 +21,19 @@
     </div>
 
     <div id="example" class="col-lg-6">
-      <div class="card border-warning">
-        <div class="card-header bg-warning text-white">
-          Justificantes de alumnos
+      <div class="card border-dark">
+        <div class="card-header bg-dark text-white">
+          Listado de campos en base de datos
         </div>
         <div class="card-body">
-          <p class="card-text">Con esta opción, usted puede realizar justificantes</p>
-          <center><a <a onclick="myFunction()" href="#" class="btn btn-outline-warning">Justificantes</a></center>
+          <p class="card-text">Con esta opción, usted puede ver el listado de campos y hacer una comparativa de los campos que va a subir a la base de datos con los campos de su archivo excel</p>
+          <center><a href="datosBDView_Orientacion.php?nume=1" class="btn btn-outline-dark">Listado de campos actuales</a></center>
         </div>
       </div>
       <br>
     </div>
+
+    
   </div>
   
   <div class="row inicial">
@@ -48,6 +50,21 @@
         </div>
       </div>
     </div>
+
+    <div id="example" class="col-lg-6">
+      <div class="card border-warning">
+        <div class="card-header bg-warning text-white">
+          Justificantes de alumnos
+        </div>
+        <div class="card-body">
+          <p class="card-text">Con esta opción, usted puede realizar justificantes</p>
+          <center><a <a onclick="myFunction()" href="#" class="btn btn-outline-warning">Justificantes</a></center>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    
     
   </div>
   <br><br><br><br><br><br>

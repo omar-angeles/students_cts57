@@ -23,7 +23,7 @@
     <div id="example" class="col-lg-6">
       <div class="card border-info">
         <div class="card-header bg-info text-white">
-          Listado de alumnos en base de datos
+          Listado de alumnos en la base de datos
         </div>
         <div class="card-body">
           <p class="card-text">Con esta opción, usted puede ver el listado de alumnos que se encuentra en la base de datos actualmente</p>
@@ -33,9 +33,20 @@
       <br>
     </div>
 
-  </div>
-  
-  <div class="row inicial">
+
+    <div id="example" class="col-lg-6">
+      <div class="card border-dark">
+        <div class="card-header bg-dark text-white">
+          Listado de campos en base de datos
+        </div>
+        <div class="card-body">
+          <p class="card-text">Con esta opción, usted puede ver el listado de campos y hacer una comparativa de los campos que va a subir a la base de datos con los campos de su archivo excel</p>
+          <center><a href="datosBDView.php?nume=1" class="btn btn-outline-dark">Listado de campos actuales</a></center>
+        </div>
+      </div>
+      <br>
+    </div>
+
     <div id="example" class="col-lg-6">
       <div class="card border-warning">
         <div class="card-header bg-warning text-white">
@@ -48,6 +59,11 @@
       </div>
       <br>
     </div>
+
+  </div>
+  
+  <div class="row inicial">
+    
 
     <div id="example" class="col-lg-6">
       <div class="card border-danger">
