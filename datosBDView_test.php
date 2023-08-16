@@ -1,10 +1,9 @@
 <?php include("partials/header.php"); ?>
 <?php include("conexionBD.php"); ?>
+<?php include("leerDatos.php"); ?>
 
 <body id="example">
   
-
-
     <div class="center mt-1">
     <div class="card pt-3">
       <div class="container-fluid p-2">
@@ -12,9 +11,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Nombre del campo</th>
-              <th scope="col">Tipo y longitud de campo</th>
-              <th scope="col">Numero del campo en base de datos</th>
+              <th scope="col">Nombre del campo en la base de datos:</th>
+              <th scope="col">Nombre del campo en el excel:</th>
 
             </tr>
           </thead>
@@ -36,7 +34,7 @@
             $paginas = ceil($num_registros / $registros);
             ?>
             <h5 class="card-tittle">Resultados (<?php echo $num_registros; ?>)
-            <div id="left"><a href="homeCtrlEsc.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br>
+            <div id="left"><a href="homeAdm.php" class="btn btn-secondary btn-block">Regresar</a></div><br><br>
           </h5>
             <div class="container_card">
 
@@ -51,9 +49,7 @@
                 <tr>
                   <th scope="row"><?php echo $num; ?></th>
                   <td><?php echo $resultado["COLUMN_NAME"]; ?></td>
-                  <td><?php echo $resultado["COLUMN_TYPE"]; ?></td>
-                  <td><?php echo $resultado["ORDINAL_POSITION"]; ?></td>
-                  
+                  <td><?php leerEncabezadosDeTabla()?></td>
                 </tr>
               <?php } ?>
           </tbody>
@@ -72,8 +68,8 @@
           } else {
             if ($pagina > 1)
               $ant = $_REQUEST["nume"] - 1;
-            echo "<a class='page-link' aria-label='Previous' href='datosBDView_ControlEscolar.php?nume=1'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a>";
-            echo "<li class='page-item '><a class='page-link' href='datosBDView_ControlEscolar.php?nume=" . ($pagina - 1) . "' >" . $ant . "</a></li>";
+            echo "<a class='page-link' aria-label='Previous' href='datosBDView.php?nume=1'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a>";
+            echo "<li class='page-item '><a class='page-link' href='datosBDView.php?nume=" . ($pagina - 1) . "' >" . $ant . "</a></li>";
           }
           echo "<li class='page-item active'><a class='page-link' >" . $_REQUEST["nume"] . "</a></li>";
           $sigui = $_REQUEST["nume"] + 1;
@@ -82,10 +78,10 @@
             $ultima == "";
           }
           if ($pagina < $paginas && $paginas > 1)
-            echo "<li class='page-item'><a class='page-link' href='datosBDView_ControlEscolar.php?nume=" . ($pagina + 1) . "'>" . $sigui . "</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='datosBDView.php?nume=" . ($pagina + 1) . "'>" . $sigui . "</a></li>";
           if ($pagina < $paginas && $paginas > 1)
             echo "
-              <li class='page-item'><a class='page-link' aria-label='Next' href='datosBDView_ControlEscolar.php?nume=" . ceil($ultima) . "'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a>
+              <li class='page-item'><a class='page-link' aria-label='Next' href='datosBDView.php?nume=" . ceil($ultima) . "'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a>
               </li>";
           ?>
       </ul>

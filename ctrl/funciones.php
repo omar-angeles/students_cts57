@@ -1,7 +1,8 @@
 <?php
 require '../conexionBD.php';
 // require 'procesamientoExcel.php';
-
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 function validacionCURP($mysqli, $curp){
     $sql = "SELECT * FROM alumnos WHERE curp = 'curp'";
@@ -13,5 +14,4 @@ function validacionCURP($mysqli, $curp){
     return $contadorRegistros;
 
 }
-
 ?>

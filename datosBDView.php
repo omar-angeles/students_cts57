@@ -3,8 +3,6 @@
 
 <body id="example">
   
-
-
     <div class="center mt-1">
     <div class="card pt-3">
       <div class="container-fluid p-2">
@@ -12,9 +10,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Nombre del campo</th>
-              <th scope="col">Tipo y longitud de campo</th>
-              <th scope="col">Numero del campo en base de datos</th>
+              <th scope="col">Nombre del campo en la base de datos:</th>
+              <th scope="col">Nombre del campo en el excel:</th>
 
             </tr>
           </thead>
@@ -51,8 +48,6 @@
                 <tr>
                   <th scope="row"><?php echo $num; ?></th>
                   <td><?php echo $resultado["COLUMN_NAME"]; ?></td>
-                  <td><?php echo $resultado["COLUMN_TYPE"]; ?></td>
-                  <td><?php echo $resultado["ORDINAL_POSITION"]; ?></td>
                   
                 </tr>
               <?php } ?>
