@@ -1,27 +1,30 @@
 <?php
-require 'vendor/autoload.php'; // Asegúrate de ajustar la ruta al archivo autoload.php
+require 'vendor/autoload.php'; // Asegúrate de ajustar la ruta a autoload.php
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-function leerEncabezadosDeTabla($archivoExcel, $hojaIndex = 0) {
+function leerDatos(){
+    $archivoExcel = 'ctrl/archivosTempExcel/archivos/reinscripcion_alumnos.xlsx'; // Cambia esto a la ruta de tu archivo Excel
+
     // Cargar el archivo Excel
     $spreadsheet = IOFactory::load($archivoExcel);
-    
-    // Seleccionar la hoja
-    $hoja = $spreadsheet->getSheet($hojaIndex);
-    
-    // Leer la primera fila (encabezados)
-    $encabezados = $hoja->getRowIterator(1, 1)->current()->toArray();
-    
-    return $encabezados;
+    $worksheet = $spreadsheet->getActiveSheet();
+
+    // Obtener los encabezados (primera fila)
+    $headers = [];
+    $maxCol = $worksheet->getHighestColumn();
+    //$maxColIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($maxCol);
+
+    for ($col = 2; $col <= 97; $col++) {
+        $cellValue = $worksheet->getCellByColumnAndRow($col, 1)->getValue();
+        $headers[] = $cellValue;
+    }
+    return $headers;
+    // Mostrar los encabezados verticalmente
+    /*echo "<ul>";
+    foreach ($headers as $header) {
+        echo "<li>" . $header . "</li>";
+    }
+    echo "</ul>";*/
 }
-
-// Ruta al archivo Excel
-$archivoExcel = 'ctrl/archivosTempExcel/archivos/reinscripcion_alumnos.xlsx';
-
-// Llamar a la función para leer los encabezados
-$encabezados = leerEncabezadosDeTabla($archivoExcel);
-
-// Imprimir los encabezados
-print_r($encabezados);
 ?>
