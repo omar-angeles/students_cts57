@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "inicio/home" por parte del rol de Administrador. -->
 <?php include("partials/header.php"); ?>
 
 <body class="table-responsive">
@@ -41,7 +42,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">Con esta opción, usted puede ver el listado de campos y hacer una comparativa de los campos que va a subir a la base de datos con los campos de su archivo excel</p>
-          <center><a href="datosBDView_test.php?nume=1" class="btn btn-outline-dark">Listado de campos actuales</a></center>
+          <center><a href="datosBDView.php?nume=1" class="btn btn-outline-dark">Listado de campos actuales</a></center>
         </div>
       </div>
       <br>

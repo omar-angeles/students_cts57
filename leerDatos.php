@@ -1,3 +1,4 @@
+<!-- Código de funcionamiento que lee los datos de el excel para su muestra. -->
 <?php
 require 'vendor/autoload.php'; // Asegúrate de ajustar la ruta a autoload.php
 

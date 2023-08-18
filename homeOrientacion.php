@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "inicio/home" por parte del rol de Orientación. -->
 <?php include("partials/header.php"); ?>
 
 <body class="table-responsive">

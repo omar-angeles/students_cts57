@@ -1,3 +1,4 @@
+<!-- Código que valida la curp. -->
 <?php
 require '../conexionBD.php';
 // require 'procesamientoExcel.php';

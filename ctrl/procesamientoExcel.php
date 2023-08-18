@@ -1,3 +1,4 @@
+<!-- Código que realiza la función de la insertación de datos, para entender el código, revisa el .txt llamado README.txt. -->
 <?php include("../partials/header.php"); ?>
 
 <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -33,10 +34,10 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
     $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
     $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
     $nombres = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
-    /*$sexoAlumno = $hojaActual->getCellByColumnAndRow(6, $indiceFila);
+    $sexoAlumno = $hojaActual->getCellByColumnAndRow(6, $indiceFila);
     $fotoAlumno = $hojaActual->getCellByColumnAndRow(7, $indiceFila);
     $fechaNacimientoAlumno = $hojaActual->getCellByColumnAndRow(8, $indiceFila);
-    $edadAlumno = $hojaActual->getCellByColumnAndRow(9, $indiceFila);*/
+    $edadAlumno = $hojaActual->getCellByColumnAndRow(9, $indiceFila);
     $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
     $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
     $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
@@ -45,7 +46,7 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         break;
     } else {
         $noControl = $hojaActual->getCellByColumnAndRow(13, $indiceFila);
-        /*$ultimoSemestreAlumno = $hojaActual->getCellByColumnAndRow(14, $indiceFila);
+        $ultimoSemestreAlumno = $hojaActual->getCellByColumnAndRow(14, $indiceFila);
         $turnoAlumno = $hojaActual->getCellByColumnAndRow(15, $indiceFila);
         $grupoAlumno = $hojaActual->getCellByColumnAndRow(16, $indiceFila);
         $especialidadAlumno = $hojaActual->getCellByColumnAndRow(17, $indiceFila);
@@ -94,7 +95,7 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         $firmaAlumno = $hojaActual->getCellByColumnAndRow(88, $indiceFila);
         $firmaTutor = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
         $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
-        $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);*/
+        $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
 
         // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
 
@@ -105,8 +106,7 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         // $idGrupo = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
         // $idDiscapacidad = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
 
-        //$sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, sexoAlumno, fotoAlumno, fechaNacimientoAlumno, edadAlumno, ultimoSemestreAlumno, turnoAlumno, grupoAlumno, especialidadAlumno, becaBenito, trabajaAlumno, tipoSecundaria, hablaLenguaIndigena, domicilioAlumno, localidad, entidadFederativa, codigoPostal, noExterior, noInterior, descripcionCasa, viveConPadres, conQuienVive, estatura, peso, servicioSeguro, alumnoMedicado, nombreEnfermedad, alumnoSobresaliente, tipoDeSobreSaliente, alumnoConTratamientoPsicologico, documentoAlumnoPsicologico, tipoTransporte, tiempoTransporte, totalTransporteSemanal, nombreUniversidadFutura, gastoUtiles, gastoUniformes, internetEnCasa, dispositivoDisponibles, reglamentoAlumno, reglamentoTutor, firmaAlumno, firmaTutor, estatusNSS, numeroNSSAlumno, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$sexoAlumno', '$fotoAlumno', '$fechaNacimientoAlumno', '$edadAlumno', '$ultimoSemestreAlumno', '$turnoAlumno', '$grupoAlumno', '$especialidadAlumno', '$becaBenito', '$trabajaAlumno', '$tipoSecundaria', '$hablaLenguaIndigena', '$domicilioAlumno', '$localidad', '$entidadFederativa', '$codigoPostal', '$noExterior', '$noInterior', '$descripcionCasa', '$viveConPadres', '$conQuienVive', '$estatura', '$peso', '$servicioSeguro', '$alumnoMedicado', '$nombreEnfermedad', '$alumnoSobresaliente', '$tipoSobresaliente', '$alumnoConTratamientoPsicologico', '$documentoAlumnoPsicologico', '$tipoTransporte', '$tiempoTransporte', '$totalTransporteSemanal', '$nombreUniversidadFutura', '$gastoUtiles', '$gastoUniformes', '$internetEnCasa', '$dispositivoDisponibles', '$reglamentoAlumno', '$reglamentoTutor', '$firmaAlumno', '$firmaTutor', '$estatusNSS', '$numeroNSSAlumno', '$numeroCasaAlumno', '$numeroCelularAlumno')";
-        $sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$numeroCasaAlumno', '$numeroCelularAlumno')";
+        $sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, sexoAlumno, fotoAlumno, fechaNacimientoAlumno, edadAlumno, ultimoSemestreAlumno, turnoAlumno, grupoAlumno, especialidadAlumno, becaBenito, trabajaAlumno, tipoSecundaria, hablaLenguaIndigena, domicilioAlumno, localidad, entidadFederativa, codigoPostal, noExterior, noInterior, descripcionCasa, viveConPadres, conQuienVive, estatura, peso, servicioSeguro, alumnoMedicado, nombreEnfermedad, alumnoSobresaliente, tipoDeSobreSaliente, alumnoConTratamientoPsicologico, documentoAlumnoPsicologico, tipoTransporte, tiempoTransporte, totalTransporteSemanal, nombreUniversidadFutura, gastoUtiles, gastoUniformes, internetEnCasa, dispositivoDisponibles, reglamentoAlumno, reglamentoTutor, firmaAlumno, firmaTutor, estatusNSS, numeroNSSAlumno, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$sexoAlumno', '$fotoAlumno', '$fechaNacimientoAlumno', '$edadAlumno', '$ultimoSemestreAlumno', '$turnoAlumno', '$grupoAlumno', '$especialidadAlumno', '$becaBenito', '$trabajaAlumno', '$tipoSecundaria', '$hablaLenguaIndigena', '$domicilioAlumno', '$localidad', '$entidadFederativa', '$codigoPostal', '$noExterior', '$noInterior', '$descripcionCasa', '$viveConPadres', '$conQuienVive', '$estatura', '$peso', '$servicioSeguro', '$alumnoMedicado', '$nombreEnfermedad', '$alumnoSobresaliente', '$tipoSobresaliente', '$alumnoConTratamientoPsicologico', '$documentoAlumnoPsicologico', '$tipoTransporte', '$tiempoTransporte', '$totalTransporteSemanal', '$nombreUniversidadFutura', '$gastoUtiles', '$gastoUniformes', '$internetEnCasa', '$dispositivoDisponibles', '$reglamentoAlumno', '$reglamentoTutor', '$firmaAlumno', '$firmaTutor', '$estatusNSS', '$numeroNSSAlumno', '$numeroCasaAlumno', '$numeroCelularAlumno')";
         $mysqli->query($sql);
 
         try {

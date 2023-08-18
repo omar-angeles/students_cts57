@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "listado de alumnos" por parte del administrador. -->
 <?php
 include 'partials/header.php';
 ?>
@@ -13,7 +14,7 @@ include("conexionBD.php");
             <tr>
               <th scope="col">#</th>
               <th scope="col">CURP</th>
-              <th scope="col">noControl</th>
+              <th scope="col">noControl</th>´
               <th scope="col">Nombre completo</th>
               <th scope="col">Numero de casa</th>
               <th scope="col">Numero de celular</th>

@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "inicio se seión". -->
 <!DOCTYPE html>
 <html>
   <head>

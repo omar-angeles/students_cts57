@@ -1,3 +1,4 @@
+<!-- Código que realiza el cierre de sesión.-->
 <?php
 session_start();
 session_unset();

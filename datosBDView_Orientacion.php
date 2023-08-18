@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "listado de datos" que carga los de la base de datos, y el excel, por parte de Orientación. -->
 <?php include("partials/header.php"); ?>
 <?php include("conexionBD.php"); ?>
 <?php include("leerDatos.php"); ?>
