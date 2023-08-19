@@ -13,23 +13,30 @@ require '../vendor/autoload.php';
 require '../conexionBD.php';
 require 'funciones.php';
 
+// Importamos las clases que vamos a utilizar para poder leer el archivo excel, en este caso se utilizo la libreria de PhpSpreadsheet
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
+// Se obtiene el nombre del archivo que se subio
 $nombreArchivo = 'archivosTempExcel/archivos/reinscripcion_alumnos.xlsx';
 $documento = IOFactory::load($nombreArchivo);
 $totalHojas = $documento->getSheetCount();
 
+// Se obtiene la hoja actual
 $hojaActual = $documento->getSheet(0);
 $numeroFilas = $hojaActual->getHighestDataRow();
 $letra = $hojaActual->getHighestColumn();
 
 $numeroLetra = Coordinate::columnIndexFromString($letra);
 
+
+// Este ciclo for se utiliza en caso de que el archivo excel tenga mas de una hoja, en este caso solo se utilizo una hoja
+
 // for ($indiceHoja = 0; $indiceHoja < $totalHojas; $indiceHoja++) {
 //     $hojaActual = $documento->getSheet($indiceHoja);
 
 
+// Con un ciclo for se recorre cada fila del archivo excel que queramos insertar a la base de datos
 for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
     $apellidoPaterno = $hojaActual->getCellByColumnAndRow(3, $indiceFila);
     $apellidoMaterno = $hojaActual->getCellByColumnAndRow(4, $indiceFila);
@@ -41,6 +48,8 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
     $numeroCelularAlumno = $hojaActual->getCellByColumnAndRow(10, $indiceFila);
     $numeroCasaAlumno = $hojaActual->getCellByColumnAndRow(11, $indiceFila);
     $curp = $hojaActual->getCellByColumnAndRow(12, $indiceFila);
+
+    // Se verifica que la celda no este vacia, en caso de que este vacia se termina el ciclo for de ese registro y sigue con los siguientes campos
     $curpR = trim($curp);
     if ($curpR == "") {
         break;
@@ -97,6 +106,8 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         $estatusNSS = $hojaActual->getCellByColumnAndRow(90, $indiceFila);
         $numeroNSSAlumno = $hojaActual->getCellByColumnAndRow(91, $indiceFila);
 
+        // algunos campos estan comentados porque no se encuentran en el archivo excel que esta en constante actualizacion, pero se siguen dejando
+
         // $localidadSeguroSocial = $hojaActual->getCellByColumnAndRow(89, $indiceFila);
 
 
@@ -106,11 +117,13 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
         // $idGrupo = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
         // $idDiscapacidad = $hojaActual->getCellByColumnAndRow(5, $indiceFila);
 
+        // Una vez que tenemos los datos en las variables hacermos el insert a la base de datos
         $sql = "INSERT INTO alumnos (curp, noControl, apellidoPaterno, apellidoMaterno, nombres, sexoAlumno, fotoAlumno, fechaNacimientoAlumno, edadAlumno, ultimoSemestreAlumno, turnoAlumno, grupoAlumno, especialidadAlumno, becaBenito, trabajaAlumno, tipoSecundaria, hablaLenguaIndigena, domicilioAlumno, localidad, entidadFederativa, codigoPostal, noExterior, noInterior, descripcionCasa, viveConPadres, conQuienVive, estatura, peso, servicioSeguro, alumnoMedicado, nombreEnfermedad, alumnoSobresaliente, tipoDeSobreSaliente, alumnoConTratamientoPsicologico, documentoAlumnoPsicologico, tipoTransporte, tiempoTransporte, totalTransporteSemanal, nombreUniversidadFutura, gastoUtiles, gastoUniformes, internetEnCasa, dispositivoDisponibles, reglamentoAlumno, reglamentoTutor, firmaAlumno, firmaTutor, estatusNSS, numeroNSSAlumno, numeroCasaAlumno, numeroCelularAlumno) VALUES ('$curp', '$noControl', '$apellidoPaterno', '$apellidoMaterno', '$nombres', '$sexoAlumno', '$fotoAlumno', '$fechaNacimientoAlumno', '$edadAlumno', '$ultimoSemestreAlumno', '$turnoAlumno', '$grupoAlumno', '$especialidadAlumno', '$becaBenito', '$trabajaAlumno', '$tipoSecundaria', '$hablaLenguaIndigena', '$domicilioAlumno', '$localidad', '$entidadFederativa', '$codigoPostal', '$noExterior', '$noInterior', '$descripcionCasa', '$viveConPadres', '$conQuienVive', '$estatura', '$peso', '$servicioSeguro', '$alumnoMedicado', '$nombreEnfermedad', '$alumnoSobresaliente', '$tipoSobresaliente', '$alumnoConTratamientoPsicologico', '$documentoAlumnoPsicologico', '$tipoTransporte', '$tiempoTransporte', '$totalTransporteSemanal', '$nombreUniversidadFutura', '$gastoUtiles', '$gastoUniformes', '$internetEnCasa', '$dispositivoDisponibles', '$reglamentoAlumno', '$reglamentoTutor', '$firmaAlumno', '$firmaTutor', '$estatusNSS', '$numeroNSSAlumno', '$numeroCasaAlumno', '$numeroCelularAlumno')";
         $mysqli->query($sql);
 
         try {
 
+            // En este try hacemos las validaciones de cada campo, en este caso utilizamos la funcion strlen para contar el numero de caracteres asi validamos que si el tamaño de la variable es mayor a 0 entonces si tiene datos y si no entonces no tiene datos y se le notifica al usuario que alumno no tiene datos en ese campo
             $curp = ($curp);
             $curpNo = strlen($curp);
 
@@ -267,6 +280,7 @@ for ($indiceFila = 2; $indiceFila <= $numeroFilas; $indiceFila++) {
             $numeroCelularAlumno = ($numeroCelularAlumno);
             $numeroCelularAlumnoNo = strlen($numeroCelularAlumno);
 
+            // Aqui empiezan las validaciones de cada campo del excel
             if (($curpNo != 18)) {
                 echo '<div class="alert alert-danger" role="alert">Error del alumn@ : ' . $nombres . ' ' . $apellidoPaterno . ' ' . $apellidoMaterno . ' debido a que el CURP no contiene el numero de caracteres apropiados.</div>';
             } else if ($noControlNo < 1) {
