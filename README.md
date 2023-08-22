@@ -32,6 +32,6 @@
 * Para ello iremos al siguiente link:
     * https://getcomposer.org/
 * Ahí, podremos ver la opción de "downloads", y nos saldran distintas opciones.
-    * Para Linux, si es una distribución basada en Arch Linux, es: sudo pacman *S composer.
+    * Para Linux, si es una distribución basada en Arch Linux, es: sudo pacman -S composer.
     * Para Windows, es ir a la siguiente liga y descargarlo como dice las instruciones de la pagina oficial https://getcomposer.org/download/
     
