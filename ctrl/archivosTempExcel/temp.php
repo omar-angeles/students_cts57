@@ -1,3 +1,4 @@
+<!-- Código que realiza la función de guardar el archivo temporal, y que muestra un mensaje de "Guardado exitosamente", antes de la carga de datos a la base de datos. -->
 <?php include("../../partials/header.php"); ?>
 
 <head>

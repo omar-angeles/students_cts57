@@ -1,5 +1,7 @@
+<!-- Código que realiza la conexión a la base de datos. -->
 <?php
-$host = 'localhost';
+//Modificar con base a su proveedor de MySQL.
+$host = 'localhost'; 
 $usuario = 'root';
 $contrasena = '';
 $nombreBase = 'students_cts57';

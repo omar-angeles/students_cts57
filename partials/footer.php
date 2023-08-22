@@ -1,3 +1,4 @@
+<!-- Código que muestra el pie de página. -->
 <?php
 ?>
 

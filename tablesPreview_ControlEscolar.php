@@ -1,3 +1,4 @@
+<!-- Código que muestra la pestaña de "listado de alumnos" por parte de Control Escolar. -->
 <?php
 include 'partials/header.php';
 ?>

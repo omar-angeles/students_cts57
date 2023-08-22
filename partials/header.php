@@ -1,3 +1,4 @@
+<!-- Código que realiza la función de encabezado, y la función de pop-ups de los módulos "Justificantes" y "Reportes". -->
 <?php
 session_start();
 if (!isset($_SESSION['nombreRol'])){ 

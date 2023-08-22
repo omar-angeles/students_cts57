@@ -1,3 +1,4 @@
+<!-- Código que realiza la validación de inicio de sesión, validando por roles e usuarios.-->
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
     
-    // Conexión a la base de datos
+    // Conexión a la base de datos, acomodar datos con base a su proveedor de MySQL.
     $conn = new mysqli("localhost", "root", "", "students_cts57");
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);

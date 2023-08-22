@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2023 at 04:16 AM
+-- Generation Time: Aug 19, 2023 at 01:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -91,7 +91,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`curp`, `noControl`, `apellidoPaterno`, `apellidoMaterno`, `nombres`, `sexoAlumno`, `fotoAlumno`, `fechaNacimientoAlumno`, `edadAlumno`, `ultimoSemestreAlumno`, `turnoAlumno`, `grupoAlumno`, `especialidadAlumno`, `becaBenito`, `trabajaAlumno`, `tipoSecundaria`, `hablaLenguaIndigena`, `domicilioAlumno`, `localidad`, `entidadFederativa`, `codigoPostal`, `noExterior`, `noInterior`, `descripcionCasa`, `viveConPadres`, `conQuienVive`, `estatura`, `peso`, `servicioSeguro`, `alumnoMedicado`, `nombreEnfermedad`, `alumnoSobresaliente`, `tipoDeSobreSaliente`, `alumnoConTratamientoPsicologico`, `documentoAlumnoPsicologico`, `tipoTransporte`, `tiempoTransporte`, `totalTransporteSemanal`, `nombreUniversidadFutura`, `gastoUtiles`, `gastoUniformes`, `internetEnCasa`, `dispositivoDisponibles`, `reglamentoAlumno`, `reglamentoTutor`, `firmaAlumno`, `firmaTutor`, `estatusNSS`, `numeroNSSAlumno`, `localidadSeguroSocial`, `numeroCasaAlumno`, `numeroCelularAlumno`, `idCarrera`, `idPariente`, `idGrupo`, `idDiscapacidad`) VALUES
-('VAEA201020MDFZSL02', '123456789', 'VAZQUEZ', 'ESQUIVEL', 'ALONDRA', 'Mujer', 'https://drive.google.com/open?id=13CXawQPHCcu6EXc44BYuZE0zZgS19YY6', '0000-00-00', 22, '3Â°', 'MATUTINO', 'B', 'Laboratorista quÃ­mico', 'SÃ­', 'SÃ­', 'General', 'No', 'ALVARO OBREGON', '', 0, 56400, '2', '4', 'SAGUAN AZUL', 'SÃ­', '', 1.600, 68.000, 'SÃ­', 'No', '', 'No', 'NINGUNA', 'No', '', 'Metro', 60, 200, 'UNAM', 500, 1000, 'SÃ­', 'Celular', 'he leÃ­do y acepto los derechos y obligaciones en el reglamento escolar vigente', 'he leÃ­do y acepto los derechos y obligaciones en el reglamento escolar vigente', 'Toda la informaciÃ³n que he capturado en el presente formulario es verdadera y correcta, ademas estoy de acuerdo con la reglamentaciÃ³n vigente del plantel, por lo que es mi deseo mi reinscripciÃ³n para el semestre 2022-2. Firmo con mi consentimiento', 'Toda la informaciÃ³n que se ha capturado en el presente formulario es verdadera y correcta, ademas estoy de acuerdo con la reglamentaciÃ³n vigente del plantel, por lo que es mi deseo la reinscripciÃ³n de mi hij@ o tutorad@ para el semestre 2022-2. Firmo con mi consentimiento', 'https://drive.google.com/open?id=1mpNdlP8gZmrDI2uJryu3XQcUBcO4Xb9B', '112234543', 'EL PINO', '5542317856', '5569055193', NULL, NULL, NULL, NULL);
+('ZAAO010828HMCVNMA4', '22309060570115', 'PRUEBA', 'PRUBA', 'GABRIEL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5556917624', '5522462492', NULL, NULL, NULL, NULL);
 -- --------------------------------------------------------
 
 --
