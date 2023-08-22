@@ -17,7 +17,7 @@
     * iconv
     * mysqli
     * pdo_mysql
-    * pdo*sqlite
+    * pdo_sqlite
     * soap
     * sockets
     * sodium
