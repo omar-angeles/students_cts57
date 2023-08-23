@@ -17,7 +17,7 @@
     * iconv
     * mysqli
     * pdo_mysql
-    * pdo*sqlite
+    * pdo_sqlite
     * soap
     * sockets
     * sodium
@@ -26,12 +26,12 @@
     * xsl
     * zip
 * En caso de que en Linux, no te aparescan, puedes instalar cada una manualmente, de la siguiente manera:
-    * Si usas alguna distribución basada en Arch Linux, es: sudo pacman *Ss <nombre_del_paquete> esto, para primero ver si existe.
-    * Si existe, despues es: sudo pacman *S <nombre_del_paquete>
+    * Si usas alguna distribución basada en Arch Linux, es: sudo pacman -Ss <nombre_del_paquete> esto, para primero ver si existe.
+    * Si existe, despues es: sudo pacman -S <nombre_del_paquete>
 * Con esto, ya podras pasar a lo siguiente, la instalación de Composer:
 * Para ello iremos al siguiente link:
     * https://getcomposer.org/
 * Ahí, podremos ver la opción de "downloads", y nos saldran distintas opciones.
-    * Para Linux, si es una distribución basada en Arch Linux, es: sudo pacman *S composer.
+    * Para Linux, si es una distribución basada en Arch Linux, es: sudo pacman -S composer.
     * Para Windows, es ir a la siguiente liga y descargarlo como dice las instruciones de la pagina oficial https://getcomposer.org/download/
     
