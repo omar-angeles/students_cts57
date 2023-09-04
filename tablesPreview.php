@@ -98,7 +98,7 @@ include("conexionBD.php");
 
 
   <!-- paginacion //////////////////////////////////////-->
-  <div class="container-fluid  col-12">
+  <!-- <div class="container-fluid  col-12">
       <ul class="pagination pg-dark justify-content-center pb-5 pt-5 mb-0" style="float: none;">
         <li class="page-item">
           <?php
@@ -125,7 +125,7 @@ include("conexionBD.php");
               </li>";
           ?>
       </ul>
-    </div>
+    </div> -->
     <!-- end paginacion ///////////////////////// -->
   </div><br><br><br><br>
 </body>

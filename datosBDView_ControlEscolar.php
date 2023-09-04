@@ -2,7 +2,7 @@
 <?php include("partials/header.php"); ?>
 <?php include("conexionBD.php"); ?>
 <?php include("leerDatos.php"); ?>
-
+<?php error_reporting(0); ?>
 <body id="example">
   
     <div class="center mt-1">
